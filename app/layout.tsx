@@ -20,8 +20,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        {children}
-        <Footer />
+        <div className="h-[calc(100vh-4rem)] overflow-y-auto p-2">
+          {children}
+        </div>
       </body>
     </html>
   )

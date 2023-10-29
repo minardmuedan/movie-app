@@ -1,7 +1,7 @@
 import MovieFetch from "@/lib/MovieFetch"
 import { Movies } from "@/models/MovieSchema"
-import Navbar from "./components/Navbar"
 import Link from "next/link"
+import SidebarContent from "../components/SidebarContent"
 
 export default async function Movies() {
   const page = 499
@@ -10,11 +10,13 @@ export default async function Movies() {
 
   if (!movies) return <p>none</p>
   return (
-    <main className="flex p-2 gap-2">
-      <Navbar />
-      <div className="flex-1 grid grid-cols-2 md:grid-cols-5 gap-3 border overflow-y-auto">
+    <main className="flex gap-2">
+      <nav className="hidden lg:block">
+        <SidebarContent />
+      </nav>
+      <div className="flex-1 grid grid-cols-2 md:grid-cols-5 gap-3">
         {movies.results.map((movie) => (
-          <Link href={`/movies/${movie.id}`}>
+          <Link key={movie.id} href={`/movies/${movie.id}`}>
             <div className="h-56 flex items-center justify-center border">
               <p key={movie.id}>{movie.title}</p>
             </div>
