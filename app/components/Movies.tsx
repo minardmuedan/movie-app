@@ -27,7 +27,7 @@ export default function MoviesContainer() {
                   {movie.id}
                 </div>
               </div>
-              <div className="group overflow-hidden">
+              <div className="group overflow-hidden ">
                 <Image
                   src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                   alt="broken"
