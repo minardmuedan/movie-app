@@ -25,19 +25,11 @@ const MovieDetailsSchema = z.object({
   vote_average: z.number().optional(),
   homepage: z.string().optional(),
 
-  poster_path: z.string().optional(),
+  poster_path: z.string(),
+  blurDataUrl: z.string().optional(),
   backdrop_path: z.string().optional(),
   budget: z.number().optional(),
-  genres: z
-    .array(
-      z
-        .object({
-          id: z.number().optional(),
-          name: z.string().optional(),
-        })
-        .optional()
-    )
-    .optional(),
+  genre_ids: z.array(z.number()),
 
   production_companies: z
     .array(
@@ -55,5 +47,5 @@ export const MoviesSchema = z.object({
   results: z.array(MovieDetailsSchema),
 })
 
-export type MovieDetails = z.infer<typeof MovieDetailsSchema>
+export type Movie = z.infer<typeof MovieDetailsSchema>
 export type Movies = z.infer<typeof MoviesSchema>

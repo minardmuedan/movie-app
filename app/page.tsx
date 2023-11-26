@@ -1,17 +1,15 @@
-import Link from "next/link"
+import MovieFetch from "@/lib/MovieFetch"
+import { Movies } from "@/models/MovieSchema"
+import MainContainer from "./components/MainContainer"
 
-export default function Main() {
+export default async function Main() {
+  const movies: Movies = await MovieFetch(
+    "https://api.themoviedb.org/3/discover/movie?"
+  )
+
   return (
-    <main className="flex items-center px-10">
-      <div>
-        <h1 className="text-9xl">WELCOME</h1>
-
-        <div className="flex justify-end">
-          <Link href="/movies">
-            <span className="btn btn-lg rounded-full btn-info">movies</span>
-          </Link>
-        </div>
-      </div>
+    <main className="bg-zinc-800 py-5 px-10 h-screen overflow-y-auto">
+      <MainContainer movies={movies} />
     </main>
   )
 }
